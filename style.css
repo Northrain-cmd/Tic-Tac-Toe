@@ -1,4 +1,54 @@
 .wrapper{
     background-color:#0E0E0E;
     min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+.gameboard{
+    flex:6;
+    display: flex;
+    flex-direction: column;
+}
+.score{
+    flex:2;
+    display: flex;
+    flex-direction: row;
+}
+.settings{
+    flex:2;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.row{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+}
+.cell{
+    flex:1;
+    border:0.1rem solid #3B5441;
+}
+.reset{
+    flex:1;
+}
+.single_Player {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+.settings button{
+    height: 50%;
+    width:90%;
+    
+}
+.multiplayer{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
 }
