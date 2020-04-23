@@ -1,13 +1,17 @@
-const cells = document.querySelectorAll(".cell");
-const cross= `<img src="Cross.svg"`;
-const circle= `<img src="Circle.svg`;
-console.log(cells);
 let gameboard = (function(){
+    const cells = document.querySelectorAll(".cell");
+    const cross= `<img src="Cross.svg">`;
+    const circle= `<img src="Circle.svg">`;
     let array = ["X","O","X","X","O","X","O","O","X"];
     return {
         displayBoard : function(){
             cells.forEach((cell,index)=>{
-                cell.innerHTML=`<img src="${array[index]==="X"? "Cross" : "Circle"}.svg">`;
+               if(array[index]==="X"){
+                   cell.innerHTML=cross;
+               }
+               else{
+                cell.innerHTML=circle;
+               }
             })
 
         },
