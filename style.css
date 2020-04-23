@@ -8,8 +8,8 @@
 .gameboard{
     flex:7;
     display:grid;
-    grid-template-columns: 1;
-    grid-template-rows: 3;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 1fr;
 }
 .score{
     flex:1;
@@ -22,12 +22,8 @@
     justify-content: space-around;
     flex-direction: row;
 }
-.row{
-    max-height:100%;
-    display: flex;
-}
+
 .cell{
-    flex:1;
     border:0.01rem solid #3B5441;
     display: flex;
     align-items: center;
