@@ -78,6 +78,9 @@ let gameBoard = (function(){
         },
         clearArray  : function(){
             array = ["","","","","","","","",""];
+            for(i=0;i<=8;i++){
+                cells[i].style.backgroundColor="#0E0E0E";
+            }
         },
     }
 })();
@@ -86,7 +89,8 @@ const Player = (name,score) =>{
     const getName = () => console.log(name);
     const getScore = () => score;
     const incScore = () => ++score;
-    return {getName,getScore,incScore};
+    const resetScore = () => score=0;
+    return {getName,getScore,incScore,resetScore};
 };
 
 const Player1 = Player("Player1",0);
@@ -96,18 +100,28 @@ const Player2 = Player("Player2",0);
 const gameFlow = (function (){
         const firstScore= document.querySelector("#firstScore");
         const secondScore=document.querySelector("#secondScore");
+        const resetScore=document.querySelector("#resetScore");
+        resetScore.addEventListener('click',()=>{
+            Player1.resetScore();
+            Player2.resetScore();
+            firstScore.textContent=0;
+            secondScore.textContent=0;
+        })
         let newGame = function(){
             gameBoard.clearArray();
             gameBoard.displayBoard();
+            cells.forEach(cell=>cell.style.pointerEvents="all");
         }
         let declareWinner = function(player){
             if (player === 1) {
                 Player1.incScore();
                 firstScore.textContent=Player1.getScore();
+                cells.forEach(cell=>cell.style.pointerEvents="none");
             }
             else if (player === 2){
                 Player2.incScore();
                 secondScore.textContent=Player2.getScore();
+                cells.forEach(cell=>cell.style.pointerEvents="none");
             }
             else {
                 console.log("It's a draw!");
@@ -115,14 +129,16 @@ const gameFlow = (function (){
         }
     return{
         startGame : function(){
+            let toggle = true;
             const restartButton = document.querySelector("#resetButton");
             restartButton.addEventListener('click',()=>{
                 newGame();
+                toggle=true;
             })
-            let toggle = true;
+
             gameBoard.displayBoard();
             cells.forEach((cell,index)=>{
-                cell.addEventListener('click',()=>{
+                cell.addEventListener('click', ()=>{
                      if(toggle===true && gameBoard.showArray()[index]===""){
                          gameBoard.placeMarker("X",index);
                          toggle=!toggle;   
