@@ -76,7 +76,7 @@
 }
 .first_player span, .second_player span{
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     line-height: 0.1;
 }
 .cell img{
@@ -97,3 +97,60 @@
     font-size: 2em;
 }
 
+@media only screen and (min-width:375px){
+   .first_player span,.second_player span{
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (min-width:414px){
+    .first_player span,.second_player span{
+        font-size: 1.8rem;
+    }
+}
+@media only screen and (min-width:768px){
+    .settings{
+        font-size: 1.8rem;
+    }
+    .first_player span,.second_player span{
+        font-size: 2rem;
+    }
+}
+@media only screen and (min-width:1280px){
+    .wrapper{
+        max-height: 100vh;
+        display: grid;
+        grid-template-columns: 2fr 6fr 2fr;
+        grid-template-rows: 8fr 1fr 1fr;
+        grid-template-areas: "first board second"
+                             "first . second"
+                             "settings settings settings";
+        
+    }
+    .settings{
+        grid-area: settings;
+        font-size: 1.3em;
+        justify-content: flex-start;
+    }
+    .score{
+        flex-direction: column;
+    }
+    .settings button{
+        width:50%;
+        height:100%;
+    }
+    .gameboard{
+        grid-area: board;
+    }
+    .first_player span{
+        grid-area: first;
+        font-size: 1.7rem;
+    }
+    .second_player span{
+        grid-area: second;
+        font-size: 1.7rem;
+    }
+    .cell img{
+        height: 70%;
+        width:50%;
+    }
+}
