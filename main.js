@@ -72,7 +72,7 @@ let gameBoard = (function(){
             array[index]=marker;
         },
         showArray   : function(){
-            //console.log(array);
+            console.log(array);
             return array;
             
         },
@@ -98,6 +98,11 @@ const Player2 = Player("Player2",0);
 const AI = Player("AI",0);
 
 const gameFlow = (function (){
+        const singlePlayer = document.querySelector("#AI");
+        let randomCell = function(){
+            let random = Math.floor(Math.random()*9);
+            return random;
+        }
         const firstScore= document.querySelector("#firstScore");
         const secondScore=document.querySelector("#secondScore");
         const resetScore=document.querySelector("#resetScore");
@@ -131,6 +136,13 @@ const gameFlow = (function (){
         }
     return{
         startGame : function(){
+            singlePlayer.addEventListener('click',()=>{
+                if(singlePlayer.classList.contains("active")){
+                    singlePlayer.classList.remove("active");
+                }
+                else singlePlayer.classList.add("active");
+
+            })
             let toggle = true;
             const restartButton = document.querySelector("#resetButton");
             restartButton.addEventListener('click',()=>{
@@ -151,6 +163,7 @@ const gameFlow = (function (){
                          gameBoard.placeMarker("O",index);
                          toggle=!toggle;  
                      }
+                    
                      gameBoard.displayBoard();
                      if (gameBoard.checkBoard() === 1 ){
                         console.log("Hi");
@@ -171,14 +184,8 @@ const gameFlow = (function (){
         
     }
         })();
-const singlePlayer = document.querySelector("#AI");
-singlePlayer.addEventListener('click',()=>{
-    if(singlePlayer.classList.contains("active")){
-        singlePlayer.classList.remove("active");
-    }
-    else singlePlayer.classList.add("active");
-})
+        
+ gameFlow.startGame();
 
-gameFlow.startGame();
 
 
