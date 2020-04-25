@@ -95,17 +95,19 @@ const Player = (name,score) =>{
 
 const Player1 = Player("Player1",0);
 const Player2 = Player("Player2",0);
-
+const AI = Player("AI",0);
 
 const gameFlow = (function (){
         const firstScore= document.querySelector("#firstScore");
         const secondScore=document.querySelector("#secondScore");
         const resetScore=document.querySelector("#resetScore");
         resetScore.addEventListener('click',()=>{
+            resetScore.classList.add("pushed");
             Player1.resetScore();
             Player2.resetScore();
             firstScore.textContent=0;
             secondScore.textContent=0;
+            setTimeout(()=>resetScore.classList.remove("pushed"),300)
         })
         let newGame = function(){
             gameBoard.clearArray();
@@ -134,6 +136,8 @@ const gameFlow = (function (){
             restartButton.addEventListener('click',()=>{
                 newGame();
                 toggle=true;
+                restartButton.classList.add("pushed");
+                setTimeout(()=>restartButton.classList.remove("pushed"),500);
             })
 
             gameBoard.displayBoard();
@@ -167,6 +171,13 @@ const gameFlow = (function (){
         
     }
         })();
+const singlePlayer = document.querySelector("#AI");
+singlePlayer.addEventListener('click',()=>{
+    if(singlePlayer.classList.contains("active")){
+        singlePlayer.classList.remove("active");
+    }
+    else singlePlayer.classList.add("active");
+})
 
 gameFlow.startGame();
 

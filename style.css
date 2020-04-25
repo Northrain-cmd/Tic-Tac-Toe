@@ -49,6 +49,7 @@
     border: 0;
     font-size: 2em;
     font-family: 'Orbitron', sans-serif;
+    transition: all linear 0.15s;
     
 }
 .multiplayer{
@@ -86,6 +87,7 @@
 #AI{
     background-color: blue;
     font-size: 3.5em;
+    transition:color linear .3s,background linear .3s;
 }
 #resetScore{
     background-color: red;
@@ -95,6 +97,13 @@
 }
 #firstScore,#secondScore{
     font-size: 2em;
+}
+.active{
+    background-color: ivory !important;
+    color:black !important;
+}
+.pushed{
+    transform: translate(0px,5px);
 }
 
 @media only screen and (min-width:375px){
@@ -116,6 +125,9 @@
     }
 }
 @media only screen and (min-width:1280px){
+    html{
+        overflow: hidden;
+    }
     .wrapper{
         max-height: 100vh;
         display: grid;
@@ -154,3 +166,4 @@
         width:50%;
     }
 }
+ 
