@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll(".cell");
+const singlePlayer = document.querySelector("#AI");
 let gameBoard = (function(){
     const cross= `<img src="Cross.svg">`;
     const circle= `<img src="Circle.svg">`;
@@ -98,9 +99,10 @@ const Player2 = Player("Player2",0);
 const AI = Player("AI",0);
 
 const gameFlow = (function (){
-        const singlePlayer = document.querySelector("#AI");
+        let random;
         let randomCell = function(){
-            let random = Math.floor(Math.random()*9);
+            while(gameBoard.showArray()[random]!=="" && gameBoard.showArray().includes("")){
+            random = Math.floor(Math.random()*9);}
             return random;
         }
         const firstScore= document.querySelector("#firstScore");
@@ -158,6 +160,11 @@ const gameFlow = (function (){
                      if(toggle===true && gameBoard.showArray()[index]===""){
                          gameBoard.placeMarker("X",index);
                          toggle=!toggle;   
+                         if(toggle===false && singlePlayer.classList.contains("active")){
+                          gameBoard.placeMarker("O",randomCell());
+                          gameBoard.showArray();
+                          toggle=!toggle;   
+                        }
                     }
                      else if(toggle===false && gameBoard.showArray()[index]===""){
                          gameBoard.placeMarker("O",index);
@@ -184,8 +191,8 @@ const gameFlow = (function (){
         
     }
         })();
-        
- gameFlow.startGame();
+
+    gameFlow.startGame();
 
 
 
