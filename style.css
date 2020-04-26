@@ -21,6 +21,7 @@
     font-family: 'Orbitron', sans-serif;
 }
 .settings{
+    margin-bottom: 3%;
     flex:2 0;
     display: flex;
     justify-content: space-around;
