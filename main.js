@@ -1,4 +1,7 @@
 const cells = document.querySelectorAll(".cell");
+let xTurn=true;
+let oTurn=false;
+let isEndOfTheGame = false;
 const singlePlayer = document.querySelector("#AI");
 let gameBoard = (function(){
     const cross= `<img src="Cross.svg">`;
@@ -105,6 +108,7 @@ const gameFlow = (function (){
             random = Math.floor(Math.random()*9);}
             return random;
         }
+        const computer = document.querySelector("#computer");
         const firstScore= document.querySelector("#firstScore");
         const secondScore=document.querySelector("#secondScore");
         const resetScore=document.querySelector("#resetScore");
@@ -119,6 +123,8 @@ const gameFlow = (function (){
         let newGame = function(){
             gameBoard.clearArray();
             gameBoard.displayBoard();
+            singlePlayer.style.pointerEvents="all";
+            isEndOfTheGame=false;
             cells.forEach(cell=>cell.style.pointerEvents="all");
         }
         let declareWinner = function(player){
@@ -135,14 +141,19 @@ const gameFlow = (function (){
             else {
                 console.log("It's a draw!");
             }
+            isEndOfTheGame = true;
         }
     return{
         startGame : function(){
             singlePlayer.addEventListener('click',()=>{
                 if(singlePlayer.classList.contains("active")){
                     singlePlayer.classList.remove("active");
+                    computer.textContent="Player 2";
                 }
-                else singlePlayer.classList.add("active");
+                else {
+                    singlePlayer.classList.add("active");
+                    computer.textContent="Computer";
+                    }     
 
             })
             let toggle = true;
@@ -158,20 +169,32 @@ const gameFlow = (function (){
             cells.forEach((cell,index)=>{
                 cell.addEventListener('click', ()=>{
                      if(toggle===true && gameBoard.showArray()[index]===""){
+                         singlePlayer.style.pointerEvents="none";
                          gameBoard.placeMarker("X",index);
-                         toggle=!toggle;   
-                         if(toggle===false && singlePlayer.classList.contains("active")){
+                         toggle=!toggle;  
+                         xTurn=false;
+                         oTurn=true;
+                         gameBoard.displayBoard(); 
+                         if(toggle===false && singlePlayer.classList.contains("active")
+                                           && gameBoard.checkBoard()=="Draw")
+                         {
                           gameBoard.placeMarker("O",randomCell());
+                          setTimeout(function(){gameBoard.displayBoard()},300);
                           gameBoard.showArray();
                           toggle=!toggle;   
+                          xTurn=true;
+                          oTurn=false;
                         }
                     }
                      else if(toggle===false && gameBoard.showArray()[index]===""){
                          gameBoard.placeMarker("O",index);
                          toggle=!toggle;  
+                         xTurn=true;
+                         oTurn=false;
+                         gameBoard.displayBoard();
                      }
                     
-                     gameBoard.displayBoard();
+                     
                      if (gameBoard.checkBoard() === 1 ){
                         console.log("Hi");
                        declareWinner(1);
@@ -180,7 +203,7 @@ const gameFlow = (function (){
                        console.log("Hi");
                       declareWinner(2);
                    }
-                   else {
+                   else if(!gameBoard.showArray().includes("")) {
                        declareWinner("Draw");
                    }
                      
