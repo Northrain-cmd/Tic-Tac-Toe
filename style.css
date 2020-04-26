@@ -12,7 +12,7 @@
     flex:7 7 0;
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr 1fr;
+    grid-template-rows:33.3%;
 }
 .score{
     flex:1 0;
