@@ -22,54 +22,113 @@ let gameBoard = (function(){
         },
         checkBoard : function(){
             if ((array[0]==="X") && (array[0]===array[1] && array[1]===array[2])){
+                if(!singlePlayer.classList.contains("active")){
+
+                
                 for(i=0;i<=2;i++){
                  cells[i].style.backgroundColor="red";}
+                }
+                else {
+                    setTimeout(()=>{ for(i=0;i<=2;i++){cells[i].style.backgroundColor="red"}},300);
+                }
                  return 1;} 
             else if((array[3]==="X") && (array[3]===array[4] && array[4]===array[5])){
-                for(i=3;i<=5;i++){
-                 cells[i].style.backgroundColor="red";} return 1;}
+                if(!singlePlayer.classList.contains("active")){
+                    for(i=3;i<=5;i++){
+                        cells[i].style.backgroundColor="red";}}
+                    else{setTimeout(()=>{for(i=3;i<=5;i++){cells[i].style.backgroundColor="red"}},300);}
+                return 1;
+                }
             else if((array[6]==="X") && (array[6]===array[7] && array[7]===array[8])){
-                for(i=6;i<=8;i++){
-                 cells[i].style.backgroundColor="red";} return 1;}
+                if(!singlePlayer.classList.contains("active")){
+                    for(i=6;i<=8;i++){
+                         cells[i].style.backgroundColor="red";}
+                        }
+                else{setTimeout(()=>{for(i=6;i<=8;i++){cells[i].style.backgroundColor="red"}},300);}        
+                return 1;}
             else if((array[0]==="X") && (array[0]===array[3] && array[3]===array[6])){
-                for(i=0;i<=6;i+=3){
-                 cells[i].style.backgroundColor="red";} return 1;}
+                if(!singlePlayer.classList.contains("active")){
+                    for(i=0;i<=6;i+=3){
+                         cells[i].style.backgroundColor="red";}}
+                else{setTimeout(()=>{ for(i=0;i<=6;i+=3){cells[i].style.backgroundColor="red"}},300);}
+                         
+                return 1;}
             else if((array[1]==="X") && (array[1]===array[4] && array[4]===array[7])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=1;i<=7;i+=3){
-                 cells[i].style.backgroundColor="red";} return 1;} 
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{ for(i=1;i<=7;i+=3){cells[i].style.backgroundColor="red"}},300);}
+                 return 1;} 
             else if((array[2]==="X") && (array[2]===array[5] && array[5]===array[8])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=2;i<=8;i+=3){
-                 cells[i].style.backgroundColor="red";} return 1;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{for(i=2;i<=8;i+=3){cells[i].style.backgroundColor="red"}},300);}
+                 return 1;}
             else if((array[0]==="X") && (array[0]===array[4] && array[4]===array[8])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=0;i<=8;i+=4){
-                 cells[i].style.backgroundColor="red";} return 1;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{for(i=0;i<=8;i+=4){cells[i].style.backgroundColor="red"}},300);}
+                 return 1;}
             else if((array[2]==="X") && (array[2]===array[4] && array[4]===array[6])) {
+                if(!singlePlayer.classList.contains("active")){
                 for(i=2;i<=6;i+=2){
-                 cells[i].style.backgroundColor="red";} return 1;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{for(i=2;i<=6;i+=2){cells[i].style.backgroundColor="red"}},300);}
+                 return 1;}
             else if ((array[0]==="O") && (array[0]===array[1] && array[1]===array[2])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=0;i<=2;i++){
-                 cells[i].style.backgroundColor="red";} return 2; }
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{ for(i=0;i<=2;i++){cells[i].style.backgroundColor="red"}},300);}
+                 return 2; }
             else if((array[3]==="O") && (array[3]===array[4] && array[4]===array[5])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=3;i<=5;i++){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{ for(i=3;i<=5;i++){cells[i].style.backgroundColor="red"}},300);}
+                 return 2;}
             else if((array[6]==="O") && (array[6]===array[7] && array[7]===array[8])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=6;i<=8;i++){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{ for(i=6;i<=8;i++){cells[i].style.backgroundColor="red"}},300);}
+                 return 2;}
             else if((array[0]==="O") && (array[0]===array[3] && array[3]===array[6])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=0;i<=6;i+=3){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{for(i=0;i<=6;i+=3){cells[i].style.backgroundColor="red"}},300);}
+                 return 2;}
             else if((array[1]==="O") && (array[1]===array[4] && array[4]===array[7])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=1;i<=7;i+=3){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{ for(i=1;i<=7;i+=3){cells[i].style.backgroundColor="red"}},300);}
+                 return 2;}
             else if((array[2]==="O") && (array[2]===array[5] && array[5]===array[8])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=2;i<=8;i+=3){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{for(i=2;i<=8;i+=3){cells[i].style.backgroundColor="red"}},300);}
+                 return 2;}
             else if((array[0]==="O") && (array[0]===array[4] && array[4]===array[8])){
+                if(!singlePlayer.classList.contains("active")){
                 for(i=0;i<=8;i+=4){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{ for(i=0;i<=8;i+=4){cells[i].style.backgroundColor="red"}},300);}
+                 return 2;}
             else if((array[2]==="O") && (array[2]===array[4] && array[4]===array[6])) {
+                if(!singlePlayer.classList.contains("active")){
                 for(i=2;i<=6;i+=2){
-                 cells[i].style.backgroundColor="red";} return 2;}
+                 cells[i].style.backgroundColor="red";}}
+                 else{setTimeout(()=>{
+                    for(i=2;i<=6;i+=2){ 
+                    cells[i].style.backgroundColor="red"
+                    }
+                },300);}
+                 return 2;}
             else return "Draw";
         },
         placeMarker : function(marker,index){
