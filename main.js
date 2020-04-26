@@ -205,6 +205,10 @@ const gameFlow = (function (){
     return{
         startGame : function(){
             singlePlayer.addEventListener('click',()=>{
+                    Player1.resetScore();
+                    Player2.resetScore();
+                    firstScore.textContent=0;
+                    secondScore.textContent=0;
                 if(singlePlayer.classList.contains("active")){
                     singlePlayer.classList.remove("active");
                     computer.textContent="Player 2";
