@@ -1,3 +1,4 @@
+window.onload=function(){ setTimeout(function(){ window.scrollTo(0, 1); }, 1); }
 const cells = document.querySelectorAll(".cell");
 let xTurn=true;
 let oTurn=false;
